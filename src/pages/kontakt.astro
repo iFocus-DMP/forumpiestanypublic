@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+---
+
+<BaseLayout 
+  title="Kontakt" 
+  description="Kontaktné informácie pre Fórum Piešťany - občianska diskusná séria pred komunálnymi voľbami 2026."
+>
+  <Hero 
+    title="Kontakt" 
+    subtitle="Spojte sa s nami"
+  />
+  
+  <Section>
+    <div class="max-w-2xl mx-auto">
+      <Card>
+        <div class="space-y-6">
+          <div>
+            <h2 class="text-2xl font-bold mb-4">Fórum Piešťany</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Občianska diskusná séria pred komunálnymi voľbami 2026 v Piešťanoch.
+            </p>
+          </div>
+          
+          <div class="space-y-4">
+            <div>
+              <h3 class="font-semibold text-gray-900 mb-2">Kontaktné informácie</h3>
+              <p class="text-gray-600">
+                Kontaktné údaje budú doplnené.
+              </p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-gray-900 mb-2">Otázky a pripomienky</h3>
+              <p class="text-gray-600">
+                Pre otázky a pripomienky k projektu Fórum Piešťany nás prosím kontaktujte.
+              </p>
+            </div>
+          </div>
+        </div>
+      </Card>
+    </div>
+  </Section>
+</BaseLayout>
+

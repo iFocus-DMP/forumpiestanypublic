@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import TopicList from '../components/TopicList.astro';
+import { project } from '../content/project';
+---
+
+<BaseLayout 
+  title="Témy" 
+  description="Témy diskusných eventov Fórum Piešťany - 6 tematických eventov a záverečná debata kandidátov na primátora."
+>
+  <Hero 
+    title="Témy diskusie" 
+    subtitle="6 tematických eventov + záverečná debata kandidátov"
+  />
+  
+  <Section>
+    <div class="mb-8">
+      <p class="text-lg text-gray-700 leading-relaxed mb-6">
+        Každý event sa zameriava na konkrétnu tému dôležitú pre život v Piešťanoch. 
+        Témy boli vybrané na základe ich dopadu na každodenný život obyvateľov a 
+        ich významu pre budúcnosť mesta.
+      </p>
+      <p class="text-gray-600">
+        <a href="/program" class="text-primary-blue hover:underline font-semibold">
+          → Pozri si dátumy a miesta konania v programe
+        </a>
+      </p>
+    </div>
+    
+    <TopicList topics={project.topics} />
+  </Section>
+</BaseLayout>
+

@@ -1,0 +1,44 @@
+---
+import type { Event } from '../content/project';
+import Card from './Card.astro';
+
+interface Props {
+  events: Event[];
+}
+
+const { events } = Astro.props;
+---
+
+<div class="space-y-6">
+  {events.map((event) => (
+    <Card>
+      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-sm font-semibold text-primary-blue bg-blue-50 px-3 py-1 rounded-full">
+              {event.dateFormatted}
+            </span>
+            <span class="text-sm text-gray-600">
+              {event.venue}
+            </span>
+            {event.isFinal && (
+              <span class="text-sm font-semibold text-gray-900 bg-yellow-100 border border-primary-yellow px-3 py-1 rounded-full">
+                Záverečná debata
+              </span>
+            )}
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">
+            {event.topic}
+          </h3>
+          <div class="space-y-2">
+            <p class="font-semibold text-gray-700">Prečo:</p>
+            <p class="text-gray-600 leading-relaxed">
+              {event.preco}
+            </p>
+          </div>
+        </div>
+      </div>
+    </Card>
+  ))}
+</div>
+

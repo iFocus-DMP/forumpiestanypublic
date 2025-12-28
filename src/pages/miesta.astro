@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import { project } from '../content/project';
+---
+
+<BaseLayout 
+  title="Miesta konania" 
+  description="Miesta konania eventov Fórum Piešťany - ARTA kultúrno-kreatívne centrum a Kino Fontána Piešťany."
+>
+  <Hero 
+    title="Miesta konania" 
+    subtitle="ARTA a Kino Fontána Piešťany"
+  />
+  
+  <Section>
+    <div class="space-y-12">
+      {project.venues.map((venue) => (
+        <div>
+          <Card>
+            <div class="space-y-6">
+              <div>
+                <h2 class="text-3xl font-bold mb-2">{venue.fullName}</h2>
+                <p class="text-gray-700 leading-relaxed">
+                  {venue.description}
+                </p>
+              </div>
+              
+              <div class="grid md:grid-cols-2 gap-4">
+                {venue.images.map((imagePath) => (
+                  <div class="rounded-lg overflow-hidden shadow-md">
+                    <img 
+                      src={imagePath} 
+                      alt={`${venue.name} - Fórum Piešťany`}
+                      class="w-full h-auto object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Card>
+        </div>
+      ))}
+    </div>
+    
+    <div class="mt-8 p-4 bg-blue-50 rounded-lg">
+      <p class="text-sm text-gray-700">
+        <strong>Poznámka:</strong> Pravidelné eventy sa konajú v ARTA, 
+        záverečná debata kandidátov na primátora sa koná v Kino Fontána.
+      </p>
+    </div>
+  </Section>
+</BaseLayout>
+

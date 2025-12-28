@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import Table from '../components/Table.astro';
+import { project } from '../content/project';
+
+const variantA = project.budget.variantA;
+const variantB = project.budget.variantB;
+
+const variantATableRows = variantA.items.map(item => [
+  item.polozka,
+  item.cenaZaEvent === 0 ? '-' : `${item.cenaZaEvent.toLocaleString('sk-SK')} €`,
+  `${item.celkoveNaklady.toLocaleString('sk-SK')} €`
+]);
+
+const variantBTableRows = variantB.items.map(item => [
+  item.polozka,
+  item.cenaZaEvent === 0 ? '-' : `${item.cenaZaEvent.toLocaleString('sk-SK')} €`,
+  `${item.celkoveNaklady.toLocaleString('sk-SK')} €`
+]);
+---
+
+<BaseLayout 
+  title="Rozpočet" 
+  description="Rozpočet projektu Fórum Piešťany - Variant A (minimalistický) a Variant B (plný) s detailným prehľadom nákladov."
+>
+  <Hero 
+    title="Rozpočet projektu" 
+    subtitle="Dva varianty rozpočtu pre 7 eventov"
+  />
+  
+  <Section>
+    <div class="mb-8">
+      <p class="text-lg text-gray-700 leading-relaxed mb-6">
+        Projekt Fórum Piešťany má dva varianty rozpočtu. Variant A je minimalistický 
+        bez marketingových aktivít, Variant B zahŕňa kompletnú marketingovú kampaň.
+      </p>
+    </div>
+    
+    <!-- Variant A -->
+    <div class="mb-12">
+      <div class="mb-6">
+        <h2 class="text-3xl font-bold mb-2">{variantA.name}</h2>
+        <Card class="bg-blue-50 border-primary-blue border-2">
+          <div class="text-center">
+            <p class="text-sm text-gray-600 mb-1">Celkové náklady</p>
+            <p class="text-4xl font-bold text-primary-blue">
+              {variantA.total.toLocaleString('sk-SK')} €
+            </p>
+          </div>
+        </Card>
+      </div>
+      
+      <!-- Desktop Table -->
+      <div class="hidden md:block mb-6">
+        <Table 
+          headers={['Položka', 'Cena za 1 event (€)', 'Celkové náklady projektu (€)']}
+          rows={variantATableRows}
+        />
+      </div>
+      
+      <!-- Mobile Cards -->
+      <div class="md:hidden space-y-4">
+        {variantA.items.map((item) => (
+          <Card>
+            <div class="space-y-2">
+              <h3 class="font-bold text-gray-900">{item.polozka}</h3>
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-600">Cena za event:</span>
+                <span class="font-semibold">
+                  {item.cenaZaEvent === 0 ? '-' : `${item.cenaZaEvent.toLocaleString('sk-SK')} €`}
+                </span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-600">Celkové náklady:</span>
+                <span class="font-semibold">{item.celkoveNaklady.toLocaleString('sk-SK')} €</span>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+    
+    <!-- Variant B -->
+    <div class="mb-12">
+      <div class="mb-6">
+        <h2 class="text-3xl font-bold mb-2">{variantB.name}</h2>
+        <Card class="bg-yellow-50 border-primary-yellow border-2">
+          <div class="text-center">
+            <p class="text-sm text-gray-600 mb-1">Celkové náklady</p>
+            <p class="text-4xl font-bold text-gray-900">
+              {variantB.total.toLocaleString('sk-SK')} €
+            </p>
+          </div>
+        </Card>
+      </div>
+      
+      <!-- Desktop Table -->
+      <div class="hidden md:block mb-6">
+        <Table 
+          headers={['Položka', 'Cena za 1 event (€)', 'Celkové náklady projektu (€)']}
+          rows={variantBTableRows}
+        />
+      </div>
+      
+      <!-- Mobile Cards -->
+      <div class="md:hidden space-y-4">
+        {variantB.items.map((item) => (
+          <Card>
+            <div class="space-y-2">
+              <h3 class="font-bold text-gray-900">{item.polozka}</h3>
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-600">Cena za event:</span>
+                <span class="font-semibold">
+                  {item.cenaZaEvent === 0 ? '-' : `${item.cenaZaEvent.toLocaleString('sk-SK')} €`}
+                </span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-600">Celkové náklady:</span>
+                <span class="font-semibold">{item.celkoveNaklady.toLocaleString('sk-SK')} €</span>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+

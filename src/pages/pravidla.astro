@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import { project } from '../content/project';
+---
+
+<BaseLayout 
+  title="Pravidlá" 
+  description="Pravidlá diskusných eventov Fórum Piešťany - rešpektovanie, transparentnosť a férová diskusia."
+>
+  <Hero 
+    title="Pravidlá diskusie" 
+    subtitle={project.rules.summary}
+  />
+  
+  <Section>
+    <div class="mb-8">
+      <Card>
+        <div class="prose prose-lg max-w-none">
+          <h2 class="text-2xl font-bold mb-4">Stručný prehľad</h2>
+          <ul class="list-disc list-inside space-y-2 text-gray-700">
+            <li>Rešpektovanie diskusie - žiadne urážky, vulgárny jazyk alebo osobné útoky</li>
+            <li>Zákaz sebapropagácie počas tematických eventov</li>
+            <li>Pravidlo publika "3×3" - max 3 minúty na príspevok, max 3 príspevky na event</li>
+            <li>Moderácia otázok cez Slido</li>
+            <li>Rozhodnutia moderátora sú konečné</li>
+            <li>Záverečná debata má striktné časovanie s časovačom</li>
+          </ul>
+        </div>
+      </Card>
+    </div>
+    
+    <div class="space-y-6">
+      <h2 class="text-3xl font-bold mb-6">Úplné pravidlá</h2>
+      
+      {project.rules.full.map((rule) => (
+        <Card title={rule.title}>
+          <p class="text-gray-700 leading-relaxed">
+            {rule.content}
+          </p>
+        </Card>
+      ))}
+    </div>
+  </Section>
+</BaseLayout>
+

@@ -1,0 +1,35 @@
+---
+interface Props {
+  headers: string[];
+  rows: (string | number)[][];
+  class?: string;
+}
+
+const { headers, rows, class: className = '' } = Astro.props;
+---
+
+<div class={`overflow-x-auto ${className}`}>
+  <table class="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg">
+    <thead class="bg-gray-50">
+      <tr>
+        {headers.map((header) => (
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+            {header}
+          </th>
+        ))}
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      {rows.map((row) => (
+        <tr class="hover:bg-gray-50">
+          {row.map((cell) => (
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+              {typeof cell === 'number' ? cell.toLocaleString('sk-SK') : cell}
+            </td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+

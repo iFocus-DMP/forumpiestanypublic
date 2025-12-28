@@ -1,0 +1,107 @@
+---
+---
+
+<header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+  <nav class="container-custom py-4">
+    <div class="flex items-center justify-between">
+      <a href="/" class="flex items-center space-x-3 hover:opacity-80 transition-opacity" aria-label="Fórum Piešťany - Domov">
+        <img src="/logoFP.png" alt="Logo Fórum Piešťany" class="h-12 w-auto" />
+      </a>
+      
+      <ul class="hidden md:flex items-center space-x-8">
+        <li>
+          <a href="/program" class="text-gray-700 hover:text-primary-blue font-medium transition-colors">
+            Program 2026
+          </a>
+        </li>
+        <li>
+          <a href="/temy" class="text-gray-700 hover:text-primary-blue font-medium transition-colors">
+            Témy
+          </a>
+        </li>
+        <li>
+          <a href="/pravidla" class="text-gray-700 hover:text-primary-blue font-medium transition-colors">
+            Pravidlá
+          </a>
+        </li>
+        <li>
+          <a href="/rozpocet" class="text-gray-700 hover:text-primary-blue font-medium transition-colors">
+            Rozpočet
+          </a>
+        </li>
+        <li>
+          <a href="/miesta" class="text-gray-700 hover:text-primary-blue font-medium transition-colors">
+            Miesta
+          </a>
+        </li>
+        <li>
+          <a href="/kontakt" class="text-gray-700 hover:text-primary-blue font-medium transition-colors">
+            Kontakt
+          </a>
+        </li>
+      </ul>
+      
+      <!-- Mobile menu button -->
+      <button 
+        id="mobile-menu-button"
+        class="md:hidden p-2 text-gray-700 hover:text-primary-blue"
+        aria-label="Otvoriť menu"
+        aria-expanded="false"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+      <ul class="flex flex-col space-y-4">
+        <li>
+          <a href="/program" class="block text-gray-700 hover:text-primary-blue font-medium transition-colors">
+            Program 2026
+          </a>
+        </li>
+        <li>
+          <a href="/temy" class="block text-gray-700 hover:text-primary-blue font-medium transition-colors">
+            Témy
+          </a>
+        </li>
+        <li>
+          <a href="/pravidla" class="block text-gray-700 hover:text-primary-blue font-medium transition-colors">
+            Pravidlá
+          </a>
+        </li>
+        <li>
+          <a href="/rozpocet" class="block text-gray-700 hover:text-primary-blue font-medium transition-colors">
+            Rozpočet
+          </a>
+        </li>
+        <li>
+          <a href="/miesta" class="block text-gray-700 hover:text-primary-blue font-medium transition-colors">
+            Miesta
+          </a>
+        </li>
+        <li>
+          <a href="/kontakt" class="block text-gray-700 hover:text-primary-blue font-medium transition-colors">
+            Kontakt
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+      mobileMenu.classList.toggle('hidden');
+      mobileMenuButton.setAttribute('aria-expanded', (!isExpanded).toString());
+    });
+  }
+</script>
+

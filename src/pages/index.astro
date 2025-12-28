@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import { project } from '../content/project';
+---
+
+<BaseLayout 
+  title="Fórum Piešťany" 
+  description="Občianska diskusná séria pred komunálnymi voľbami 2026 v Piešťanoch. Zvýšme účasť voličov a informovanosť občanov."
+>
+  <Hero 
+    title="Fórum Piešťany" 
+    subtitle="Občianska diskusná séria pred komunálnymi voľbami 2026"
+  />
+  
+  <Section>
+    {project.timeLimited && (
+      <div class="bg-yellow-50 border-l-4 border-primary-yellow p-4 mb-8 rounded">
+        <p class="text-sm font-semibold text-gray-800">
+          ⚠️ Projekt je časovo obmedzený a končí po komunálnych voľbách 2026.
+        </p>
+      </div>
+    )}
+    
+    <div class="prose prose-lg max-w-none mb-12">
+      <h2 class="text-3xl font-bold mb-6">O projekte</h2>
+      <p class="text-lg text-gray-700 leading-relaxed mb-6">
+        Fórum Piešťany je séria diskusných eventov zameraných na kľúčové témy 
+        ovplyvňujúce život v Piešťanoch. Projekt vytvára priestor pre informovanú 
+        diskusiu medzi občanmi, expertmi a kandidátmi pred komunálnymi voľbami 2026.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
+      <Card title="Primárny cieľ">
+        <p class="text-gray-700 leading-relaxed">
+          {project.goals.primary}
+        </p>
+      </Card>
+      
+      <Card title="Sekundárny cieľ">
+        <p class="text-gray-700 leading-relaxed">
+          {project.goals.secondary}
+        </p>
+      </Card>
+    </div>
+    
+    <Section class="bg-gray-50 -mx-4 px-4 md:-mx-8 md:px-8 rounded-lg">
+      <Card title="Komu je projekt určený">
+        <p class="text-gray-700 leading-relaxed">
+          {project.audience}
+        </p>
+      </Card>
+    </Section>
+    
+    <Section>
+      <div class="text-center">
+        <h2 class="text-3xl font-bold mb-6">Formát eventov</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div class="text-center">
+            <div class="text-3xl mb-2">⏱️</div>
+            <p class="font-semibold">{project.format.duration}</p>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl mb-2">👥</div>
+            <p class="font-semibold">{project.format.audience}</p>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl mb-2">📹</div>
+            <p class="font-semibold">{project.format.recording}</p>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl mb-2">💬</div>
+            <p class="font-semibold">{project.format.questions}</p>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl mb-2">📱</div>
+            <p class="font-semibold">{project.format.clips}</p>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl mb-2">🇸🇰</div>
+            <p class="font-semibold">{project.format.language}</p>
+          </div>
+        </div>
+      </div>
+    </Section>
+    
+    <Section>
+      <div class="text-center">
+        <a 
+          href="/program" 
+          class="inline-block bg-primary-blue text-white font-semibold px-8 py-4 rounded-lg hover:bg-blue-700 transition-colors shadow-md"
+        >
+          Pozri si program 2026 →
+        </a>
+      </div>
+    </Section>
+  </Section>
+</BaseLayout>
+
