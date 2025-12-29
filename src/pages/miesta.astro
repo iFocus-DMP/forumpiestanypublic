@@ -40,6 +40,18 @@ import { project } from '../content/project';
                   </div>
                 ))}
               </div>
+              
+              {venue.id === 'arta' && (
+                <p class="text-xs text-text-muted italic text-right">
+                  Zdroj foto: FB ARTA
+                </p>
+              )}
+              
+              {venue.id === 'kino-fontana' && (
+                <p class="text-xs text-text-muted italic text-right">
+                  Zdroj foto: web PIC
+                </p>
+              )}
             </div>
           </Card>
         </div>
