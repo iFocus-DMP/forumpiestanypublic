@@ -55,8 +55,8 @@ export const project = {
     recording: 'Offline nahrávanie publikované po evente',
     questions: 'Otázky cez Slido',
     streaming: 'Nestreamuje sa',
-    clips: 'Upravené klipy publikované na sociálnych sieťach',
-    language: 'Slovensky',
+    clips: 'Nájdete na sociálnych sieťach',
+    language: 'Poprední slovenskí experti na dané témy',
   },
   
   events: [

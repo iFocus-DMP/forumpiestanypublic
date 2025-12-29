@@ -41,6 +41,15 @@ import { project } from '../content/project';
       <h2 class="text-3xl font-bold mb-6">Kalendár eventov</h2>
       <EventList events={project.events} />
     </div>
+
+    {project.timeLimited && (
+      <div class="bg-yellow-50 border-l-4 border-primary-yellow p-4 mt-12 rounded-r-lg shadow-sm">
+        <p class="text-sm font-semibold text-gray-800 flex items-center">
+          <span class="mr-2 text-xl">⚠️</span> 
+          Projekt je časovo obmedzený a končí po komunálnych voľbách 2026.
+        </p>
+      </div>
+    )}
   </Section>
 </BaseLayout>
 
