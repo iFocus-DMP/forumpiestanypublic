@@ -1,0 +1,25 @@
+---
+interface Props {
+  icon?: string;
+  title: string;
+  description: string;
+  illustrationType?: 'speech-bubble' | 'people' | 'discussion' | 'circle' | 'abstract' | 'star';
+}
+
+import Illustration from './Illustration.astro';
+
+const { icon, title, description, illustrationType = 'abstract' } = Astro.props;
+---
+
+<div class="bg-cream-light rounded-3xl p-8 md:p-10 border border-cream-warm/50 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col items-center text-center">
+  {icon ? (
+    <div class="text-5xl md:text-6xl mb-6">{icon}</div>
+  ) : (
+    <div class="mb-6">
+      <Illustration type={illustrationType} size="md" color="#0066CC" />
+    </div>
+  )}
+  <h3 class="text-xl md:text-2xl font-bold mb-4 text-text">{title}</h3>
+  <p class="text-text-secondary leading-relaxed text-sm md:text-base">{description}</p>
+</div>
+

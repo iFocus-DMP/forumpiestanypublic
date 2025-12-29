@@ -4,32 +4,66 @@ interface Props {
   subtitle?: string;
 }
 
-import { Image } from 'astro:assets';
-import heroBg from '../assets/hero-bg.jpg';
+import Illustration from './Illustration.astro';
 
 const { title, subtitle } = Astro.props;
 ---
 
-<section class="relative bg-gray-900 text-white py-32 md:py-48 overflow-hidden">
-  <div class="absolute inset-0 z-0">
-    <Image 
-      src={heroBg} 
-      alt="Fórum Piešťany Hero" 
-      class="w-full h-full object-cover opacity-60"
-    />
-    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
+<section class="relative bg-cream text-text py-24 md:py-32 lg:py-40 overflow-hidden">
+  <!-- Decorative background elements -->
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-20 right-10 opacity-10">
+      <Illustration type="circle" size="lg" color="#0066CC" />
+    </div>
+    <div class="absolute top-40 left-10 opacity-10">
+      <Illustration type="abstract" size="md" color="#FFCC00" />
+    </div>
+    <div class="absolute bottom-20 right-1/4 opacity-10">
+      <Illustration type="speech-bubble" size="md" color="#0066CC" />
+    </div>
   </div>
 
   <div class="container-custom relative z-10">
-    <div class="max-w-4xl">
-      <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight drop-shadow-sm">
+    <div class="max-w-5xl mx-auto text-center">
+      <!-- Hero illustrations -->
+      <div class="flex justify-center items-center gap-8 mb-8 md:mb-12">
+        <div class="hidden md:block">
+          <Illustration type="people" size="lg" color="#0066CC" />
+        </div>
+        <div class="hidden lg:block">
+          <Illustration type="discussion" size="lg" color="#FFCC00" />
+        </div>
+        <div class="hidden md:block">
+          <Illustration type="speech-bubble" size="lg" color="#0066CC" />
+        </div>
+      </div>
+      
+      <h1 class="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-8 md:mb-10 leading-tight">
         {title}
       </h1>
+      
       {subtitle && (
-        <p class="text-xl md:text-2xl text-gray-200 uppercase tracking-wider font-light max-w-2xl drop-shadow-sm">
+        <p class="text-xl md:text-2xl lg:text-3xl text-text-secondary max-w-3xl mx-auto mb-12 md:mb-16 leading-relaxed font-light">
           {subtitle}
         </p>
       )}
+      
+      <!-- CTA Button -->
+      <div class="flex justify-center">
+        <a 
+          href="/program" 
+          class="inline-flex items-center justify-center bg-primary-blue text-white font-bold text-lg md:text-xl px-10 md:px-14 py-5 md:py-6 rounded-full hover:bg-primary-blue-600 hover:scale-105 hover:shadow-2xl transition-all duration-300"
+        >
+          Pozri si program 2026
+          <svg class="w-5 h-5 md:w-6 md:h-6 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </a>
+      </div>
+      
+      <p class="mt-6 text-sm md:text-base text-text-muted">
+        Občianska diskusná séria • Komunálne voľby 2026
+      </p>
     </div>
   </div>
 </section>
